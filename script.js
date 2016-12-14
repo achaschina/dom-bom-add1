@@ -79,7 +79,7 @@ function showStars() {
         divStar.id = 'star';
         divStar.style.height= '30px';
         divStar.style.width = '30px';
-        divStar.style.background = 'url(https://lh3.googleusercontent.com/oZArF0fX2aqGg0cTWBsLr6Rv6YMbc1N54gDq6pNJs-jpFHnBDpiwpTa4dqzDq1tzkaWWSXMG1wxLstQ=w1366-h638)';
+        divStar.style.background = 'url(img/star.png)';
         divStar.style.backgroundSize = 'cover';
         divStar.style.top = '10px';
         divStar.style.left= 400+30*i + 'px';
