@@ -9,6 +9,7 @@ document.body.onkeydown = function (event) {
     var KEYCODE_DOWN  = 40;
     var KEYCODE_UP    = 38;
     var KEYCODE_ENTER = 13;
+    var KEYCODE_SPACE = 32;
 
     if (event.keyCode == KEYCODE_LEFT) {
         el.style.left = (parseInt(el.style.left) - 50) + 'px';
@@ -26,10 +27,26 @@ document.body.onkeydown = function (event) {
         removeOneStar();
         createBullet(); // function create div with id shooter, which is our bullet
         makeShot();     // function shoot bullet
+        checkedStars();
+    }
+    else if (event.keyCode == KEYCODE_SPACE) {
+        document.querySelector('h1').remove();
+        showStars();
+    }
+
+    function checkedStars() {
+       if (!document.getElementById('star')) {
+           changeH1();
+       }
+    }
+
+    function changeH1() {
+        var h1 = document.querySelector('h1');
+        h1.innerHTML = 'You used all attempts! If you want try again press Space:)';
     }
 
     function createBullet() {
-        divSooter = document.createElement('div');
+        var divSooter = document.createElement('div');
         divSooter.id = 'shooter';
         divSooter.style.height= '10px';
         divSooter.style.width = '10px';
@@ -56,7 +73,7 @@ document.body.onkeydown = function (event) {
             }
         }
     }
-}
+};
 
 
 //bonus
@@ -68,13 +85,15 @@ function removeOneStar() {
 function createH1() {
     var h1 = document.createElement('h1');
     h1.style.color = '#b1afbd';
-    h1.innerHTML  = 'You have five attemps!'
+    h1.innerHTML  = 'You have five attemps!';
     document.getElementById('main').appendChild(h1);
 }
 
 function showStars() {
-    createH1();
-    for (var i = 0; i < 5; i++) {
+    if (!document.getElementById('star')) {
+        createH1();
+    }
+    for (var j = 0; j < 5; j++) {
         divStar = document.createElement('div');
         divStar.id = 'star';
         divStar.style.height= '30px';
@@ -82,7 +101,7 @@ function showStars() {
         divStar.style.background = 'url(img/star.png)';
         divStar.style.backgroundSize = 'cover';
         divStar.style.top = '10px';
-        divStar.style.left= 400+30*i + 'px';
+        divStar.style.left= 400+30*j + 'px';
         divStar.style.position = 'absolute';
         document.getElementById('main').appendChild(divStar);
         }
